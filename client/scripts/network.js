@@ -53,7 +53,7 @@ class ServerConnection {
   _endpoint() {
     // hack to detect if deployment or development environment
     const protocol = location.protocol.startsWith('https') ? 'wss' : 'ws';
-    const host = location.hostname.startsWith('localhost') ? 'localhost:3000' : 'tzh2.local:3000'; // (location.host + '/server');
+    const host = location.hostname.startsWith('localhost') ? 'localhost:3000' : (location.host + '/server');
     const webrtc = window.isRtcSupported ? '/webrtc' : '/fallback';
     const url = protocol + '://' + host + webrtc;
     return url;

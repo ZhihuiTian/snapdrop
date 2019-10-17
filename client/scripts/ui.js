@@ -223,7 +223,7 @@ class SetNameDialog extends Dialog {
     e.preventDefault();
     const displayName = this.$text.value.trim();
     if (displayName && displayName != '') {
-      Cookies.set('displayName', this.$text.value);
+      Cookies.set('displayName', this.$text.value, { expires: 365 });
       this.hide();
       location.reload();
     }

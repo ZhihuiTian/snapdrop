@@ -1,5 +1,5 @@
 const parser = require('ua-parser-js');
-
+const cookie = require('cookie');
 class SnapdropServer {
 
     constructor(port) {
@@ -177,12 +177,14 @@ class Peer {
     }
 
     _setName(req) {
+        var displayName = cookie.parse(req.headers.cookie).displayName;
         var ua = parser(req.headers['user-agent']);
         this.name = {
             model: ua.device.model,
             os: ua.os.name,
             browser: ua.browser.name,
-            type: ua.device.type
+            type: ua.device.type,
+            displayName: displayName,
         };
     }
 
